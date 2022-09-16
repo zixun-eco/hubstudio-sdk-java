@@ -18,7 +18,7 @@ public class ProxyUpdateModel {
     private Integer asDynamicType;
 
     @ApiModelProperty("代理主机地址")
-    private String proxyServer;
+    private String proxyHost;
 
     @ApiModelProperty("代理端口")
     private Integer proxyPort;
