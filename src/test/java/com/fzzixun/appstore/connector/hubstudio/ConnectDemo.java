@@ -22,10 +22,10 @@ public class ConnectDemo {
         CommandClient client = new CommandClient(CommandConfig.APP_ID, CommandConfig.PRIVATE_KEY);
 
         ClientOpenHandler openHandler = new ClientOpenHandler();
-        openHandler.openClient(client, "10814480");
+        openHandler.openClient(client, "填写团队code");
 
         EnvOpenHandler envOpenHandler = new EnvOpenHandler();
-        BaseResponse response = envOpenHandler.openEnv(client, "紫讯科技23-4", "570114613");
+        BaseResponse response = envOpenHandler.openEnv(client, "填写团队code", "填写环境code");
         JSONObject jsonObject = JSON.parseObject(response.getResult());
         Integer debuggingPort = jsonObject.getInteger("debuggingPort");
 
