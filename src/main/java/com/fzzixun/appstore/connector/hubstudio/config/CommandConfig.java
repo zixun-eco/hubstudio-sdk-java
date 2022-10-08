@@ -10,7 +10,7 @@ public class CommandConfig {
     // hubstudio程序路径
     public static final String HUBSTUDIO_PATH = "D:\\Hubstudio\\2.12.0.1\\Hubstudio.exe";
     // webdriver程序路径
-    public static final String WEBDRIVER_PATH = "D:\\webdriver\\chromedriver100.exe";
+    public static final String WEBDRIVER_PATH = "chromedriver100.exe";
 
     // 连接端口
     public static final int SOCKET_PORT = 6873;
