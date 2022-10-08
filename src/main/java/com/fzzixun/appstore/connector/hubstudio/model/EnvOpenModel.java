@@ -15,9 +15,9 @@ public class EnvOpenModel {
     private String containerCode;
 
     @ApiModelProperty("是否无头模式")
-    private boolean isHeadless = false;
+    private Boolean isHeadless = false;
 
     @ApiModelProperty("")
-    private boolean isWebDriverReadOnlyMode = true;
+    private Boolean isWebDriverReadOnlyMode = true;
 
 }
