@@ -19,11 +19,9 @@ public class ConnectPlaywrightDemo {
     public void test() throws IOException {
         CommandClient client = new CommandClient(CommandConfig.APP_ID, CommandConfig.PRIVATE_KEY);
 
-        ClientOpenHandler openHandler = new ClientOpenHandler();
-        openHandler.openClient(client, "11236255");
+        ClientOpenHandler.openClient(client, "11236255");
 
-        EnvOpenHandler envOpenHandler = new EnvOpenHandler();
-        BaseResponse response = envOpenHandler.openEnv(client, "11236255", "36767766");
+        BaseResponse response = EnvOpenHandler.openEnv(client, "36767766");
         JSONObject jsonObject = JSON.parseObject(response.getResult());
         Integer debuggingPort = jsonObject.getInteger("debuggingPort");
 

@@ -5,9 +5,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.fzzixun.appstore.connector.hubstudio.common.CommandClient;
 import com.fzzixun.appstore.connector.hubstudio.config.CommandConfig;
 import com.fzzixun.appstore.connector.hubstudio.handler.ClientOpenHandler;
+import com.fzzixun.appstore.connector.hubstudio.handler.EnvCreateHandler;
 import com.fzzixun.appstore.connector.hubstudio.handler.EnvOpenHandler;
 import com.fzzixun.appstore.connector.hubstudio.handler.WebdriverHandler;
 import com.fzzixun.appstore.connector.hubstudio.response.BaseResponse;
+import com.fzzixun.appstore.connector.hubstudio.response.EnvCreateResponse;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -21,16 +23,19 @@ public class ConnectDemo {
     public void test() throws InterruptedException, IOException {
         CommandClient client = new CommandClient(CommandConfig.APP_ID, CommandConfig.PRIVATE_KEY);
 
-        ClientOpenHandler openHandler = new ClientOpenHandler();
-        openHandler.openClient(client, "填写团队code");
-
-        EnvOpenHandler envOpenHandler = new EnvOpenHandler();
-        BaseResponse response = envOpenHandler.openEnv(client, "填写团队code", "填写环境code");
+        boolean openResult = ClientOpenHandler.openClient(client, "11236255");
+        if (!openResult) {
+            return;
+        }
+        // 创建环境
+        EnvCreateResponse envCreateResponse = EnvCreateHandler.createEnv(client);
+        // 打开环境
+        BaseResponse response = EnvOpenHandler.openEnv(client, envCreateResponse.getContainerCode().toString());
         JSONObject jsonObject = JSON.parseObject(response.getResult());
         Integer debuggingPort = jsonObject.getInteger("debuggingPort");
 
         // 获取webdriver
-        ChromeDriver driver = WebdriverHandler.getDriver(debuggingPort);
+        ChromeDriver driver = WebdriverHandler.getDriverByVersion(envCreateResponse.getCoreVersion(), debuggingPort);
 
         // 打开百度首页
         driver.get("https://www.baidu.com");

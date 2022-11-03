@@ -8,9 +8,6 @@ import lombok.Data;
 @ApiModel("更新环境-请求参数")
 public class EnvUpdateModel {
 
-    @ApiModelProperty(value = "团队code", required = true)
-    private Long groupCode;
-
     @ApiModelProperty(value = "环境id", required = true)
     private Long containerCode;
 

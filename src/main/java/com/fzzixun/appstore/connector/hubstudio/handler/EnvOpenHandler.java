@@ -11,11 +11,12 @@ public class EnvOpenHandler {
     /**
      * 打开环境
      */
-    public BaseResponse openEnv(CommandClient client, String groupCode, String containerCode) {
+    public static BaseResponse openEnv(CommandClient client, String containerCode) {
         EnvOpenRequest request = new EnvOpenRequest();
         EnvOpenModel model = new EnvOpenModel();
-        model.setGroupCode(groupCode);
         model.setContainerCode(containerCode);
+        model.addArguments("--disable-extensions"); // 禁用插件
+        model.addArguments("--blink-settings=imagesEnabled=false"); // 禁止加载图片
         request.setBizModel(model);
 
         BaseResponse response = client.execute(request);
@@ -28,8 +29,7 @@ public class EnvOpenHandler {
     }
 
     public static void main(String[] args) {
-        EnvOpenHandler handler = new EnvOpenHandler();
         CommandClient client = new CommandClient(CommandConfig.APP_ID, CommandConfig.PRIVATE_KEY);
-        handler.openEnv(client, "紫讯科技23-4", "570114613");
+        EnvOpenHandler.openEnv(client, "570114613");
     }
 }

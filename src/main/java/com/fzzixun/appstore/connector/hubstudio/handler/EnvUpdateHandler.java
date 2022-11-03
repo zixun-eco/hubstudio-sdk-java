@@ -11,10 +11,9 @@ public class EnvUpdateHandler {
     /**
      * 更新环境
      */
-    public void updateEnv(CommandClient client) {
+    public static void updateEnv(CommandClient client) {
         EnvUpdateRequest request = new EnvUpdateRequest();
         EnvUpdateModel model = new EnvUpdateModel();
-        model.setGroupCode(10814480L);
         model.setContainerCode(8253330L);
         model.setContainerName("新环境5-更新");
         model.setRemark("测试更新");
@@ -30,8 +29,7 @@ public class EnvUpdateHandler {
     }
 
     public static void main(String[] args) {
-        EnvUpdateHandler handler = new EnvUpdateHandler();
         CommandClient client = new CommandClient(CommandConfig.APP_ID, CommandConfig.PRIVATE_KEY);
-        handler.updateEnv(client);
+        EnvUpdateHandler.updateEnv(client);
     }
 }
