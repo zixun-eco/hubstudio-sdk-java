@@ -8,9 +8,6 @@ import lombok.Data;
 @ApiModel("更新代理-请求参数")
 public class ProxyUpdateModel {
 
-    @ApiModelProperty(value = "团队code", required = true)
-    private Long groupCode;
-
     @ApiModelProperty(value = "环境id", required = true)
     private Long containerCode;
 

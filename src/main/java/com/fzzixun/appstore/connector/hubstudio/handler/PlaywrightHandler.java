@@ -16,7 +16,7 @@ public class PlaywrightHandler {
     }
 
     public static void openBaidu(BrowserContext browserContext) {
-        // 第一个标签页
+        // 使用第一个标签页打开playwright官网
         Page page = browserContext.pages().get(0);
         page.navigate("https://playwright.dev/");
         System.out.println(page.title());

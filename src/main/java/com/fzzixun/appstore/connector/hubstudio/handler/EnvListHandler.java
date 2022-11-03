@@ -13,10 +13,9 @@ public class EnvListHandler {
     /**
      * 获取环境列表
      */
-    public EnvListResponse listEnv(CommandClient client) {
+    public static EnvListResponse listEnv(CommandClient client) {
         EnvListRequest request = new EnvListRequest();
         EnvListModel model = new EnvListModel();
-        model.setGroupCode(10814480L);
 //        model.setContainerCodes(Arrays.asList(8252570L, 8252572L));
 //        model.setNoTag(1);
         model.setCurrent(1);
@@ -36,8 +35,7 @@ public class EnvListHandler {
     }
 
     public static void main(String[] args) {
-        EnvListHandler handler = new EnvListHandler();
         CommandClient client = new CommandClient(CommandConfig.APP_ID, CommandConfig.PRIVATE_KEY);
-        EnvListResponse envListResponse = handler.listEnv(client);
+        EnvListResponse envListResponse = EnvListHandler.listEnv(client);
     }
 }

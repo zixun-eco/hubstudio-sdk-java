@@ -11,7 +11,9 @@ public class EnvCloseHandler {
     /**
      * 关闭环境
      */
-    public void closeEnv(CommandClient client, EnvCloseModel model) {
+    public static void closeEnv(CommandClient client, String containerCode) {
+        EnvCloseModel model = new EnvCloseModel();
+        model.setContainerCode(containerCode);
         EnvCloseRequest request = new EnvCloseRequest();
 
         request.setBizModel(model);
@@ -24,16 +26,8 @@ public class EnvCloseHandler {
         }
     }
 
-    public void closeEnv(CommandClient client, String groupCode, String containerCode) {
-        EnvCloseModel model = new EnvCloseModel();
-        model.setGroupCode(groupCode);
-        model.setContainerCode(containerCode);
-        this.closeEnv(client, model);
-    }
-
     public static void main(String[] args) {
-        EnvCloseHandler handler = new EnvCloseHandler();
         CommandClient client = new CommandClient(CommandConfig.APP_ID, CommandConfig.PRIVATE_KEY);
-        handler.closeEnv(client, "紫讯科技23-4", "754110928");
+        EnvCloseHandler.closeEnv(client, "754110928");
     }
 }
