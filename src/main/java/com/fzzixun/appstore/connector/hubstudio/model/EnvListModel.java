@@ -10,9 +10,6 @@ import java.util.List;
 @ApiModel("环境列表-请求参数")
 public class EnvListModel {
 
-    @ApiModelProperty(value = "团队code", required = true)
-    private Long groupCode;
-
     @ApiModelProperty(value = "环境id列表")
     private List<Long> containerCodes;
 

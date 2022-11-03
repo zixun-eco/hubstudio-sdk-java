@@ -8,9 +8,6 @@ import lombok.Data;
 @ApiModel("创建分组-请求参数")
 public class EnvGroupCreateModel {
 
-    @ApiModelProperty(value = "团队code", required = true)
-    private Long groupCode;
-
     @ApiModelProperty(value = "分组",required = true)
     private String tagName;
 

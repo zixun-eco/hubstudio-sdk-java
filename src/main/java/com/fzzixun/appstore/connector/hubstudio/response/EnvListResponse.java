@@ -14,10 +14,13 @@ public class EnvListResponse {
     public static class EnvInfo {
 
         @ApiModelProperty("环境code")
-        private String containerCode;
+        private Long containerCode;
 
         @ApiModelProperty("环境名")
         private String containerName;
+
+        @ApiModelProperty("内核版本")
+        private String coreVersion;
 
         @ApiModelProperty("分组")
         private String tagName;

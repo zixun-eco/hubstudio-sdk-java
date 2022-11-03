@@ -8,9 +8,6 @@ import lombok.Data;
 @ApiModel("创建环境-请求参数")
 public class EnvCreateModel {
 
-    @ApiModelProperty(value = "团队code", required = true)
-    private Long groupCode;
-
     @ApiModelProperty(value = "使用方式 1静态 2动态")
     private Integer asDynamicType;
 
