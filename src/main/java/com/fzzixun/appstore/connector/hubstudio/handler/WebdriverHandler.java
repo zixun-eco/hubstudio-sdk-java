@@ -47,8 +47,7 @@ public class WebdriverHandler {
     /**
      * 根据内核版本获取webdriver
      */
-    public static ChromeDriver getDriverByVersion(int coreVersion, int port) {
-        init(coreVersion);
+    public static synchronized ChromeDriver getDriverByVersion(int coreVersion, int port) {
         if (coreVersion == 100) {
             System.setProperty("webdriver.chrome.driver", CommandConfig.WEBDRIVER_PATH_100);
         } else if (coreVersion == 105) {
@@ -59,8 +58,19 @@ public class WebdriverHandler {
         return new ChromeDriver(chromeOptions);
     }
 
+    /**
+     * 根据路径获取webdriver
+     */
+    public static synchronized ChromeDriver getDriverByPath(String webdriverPath, int port) {
+        System.setProperty("webdriver.chrome.driver", webdriverPath);
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.setExperimentalOption("debuggerAddress", "127.0.0.1:" + port);
+        return new ChromeDriver(chromeOptions);
+    }
+
     public static void main(String[] args) throws InterruptedException {
-        ChromeDriver driver = WebdriverHandler.getDriver(123);
+//        ChromeDriver driver = WebdriverHandler.getDriver(123);
+        ChromeDriver driver = WebdriverHandler.getDriverByPath("D:\\chromedriver100.exe", 123);
         // 打开百度首页
         driver.get("https://www.baidu.com");
         // 获取输入框，输入hubstudio
