@@ -33,9 +33,10 @@ public class ConnectDemo {
         BaseResponse response = EnvOpenHandler.openEnv(client, envCreateResponse.getContainerCode().toString());
         JSONObject jsonObject = JSON.parseObject(response.getResult());
         Integer debuggingPort = jsonObject.getInteger("debuggingPort");
+        String webdriverPath = jsonObject.getString("webdriver");
 
         // 获取webdriver
-        ChromeDriver driver = WebdriverHandler.getDriverByVersion(envCreateResponse.getCoreVersion(), debuggingPort);
+        ChromeDriver driver = WebdriverHandler.getDriverByPath(webdriverPath, debuggingPort);
 
         // 打开百度首页
         driver.get("https://www.baidu.com");
