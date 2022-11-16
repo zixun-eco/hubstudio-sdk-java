@@ -48,6 +48,7 @@ public class WebdriverHandler {
      * 根据内核版本获取webdriver
      */
     public static synchronized ChromeDriver getDriverByVersion(int coreVersion, int port) {
+        init(coreVersion);
         if (coreVersion == 100) {
             System.setProperty("webdriver.chrome.driver", CommandConfig.WEBDRIVER_PATH_100);
         } else if (coreVersion == 105) {
